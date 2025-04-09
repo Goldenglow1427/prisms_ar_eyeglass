@@ -8,7 +8,7 @@ class TTMModule:
         return
     
     def generate_image(self, description: str) -> float:
-        image_url = "https://image.pollinations.ai/prompt/" + description;
+        image_url = "https://image.pollinations.ai/prompt/" + description
 
         start_time = time.time()
 
@@ -19,3 +19,4 @@ class TTMModule:
         end_time = time.time()
 
         return end_time - start_time
+

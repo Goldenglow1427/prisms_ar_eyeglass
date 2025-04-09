@@ -30,5 +30,6 @@ long_prompt_list = [
 ]
 
 
-for i in range(len(long_prompt_list)):
-    print(f"It takes {round(my_module.generate_image(long_prompt_list[i]), 2)} seconds to generate image {i+1}");
+# for i in range(len(long_prompt_list)):
+for i in [2]:
+    print(f"It takes {round(my_module.generate_image(prompt_list[i]), 2)} seconds to generate image {i+1}");

@@ -1,6 +1,14 @@
 *.zip
 
+# Setting & configuration files.
 *.bak
 electronics_and_firmware/esp32_firmware_v0p3/ossg_firmware_mcu/.vscode/settings.json
 electronics_and_firmware/esp32_firmware_v0p3/ossg_firmware_mcu/sdkconfig.pico32
 electronics_and_firmware/esp32_firmware_v0p3/ossg_firmware_mcu/.vscode/settings.json
+
+
+# Output of generation
+image_name.jpg
+
+# Python execution cache
+*cache*
