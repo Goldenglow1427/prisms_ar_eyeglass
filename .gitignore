@@ -1,3 +1,7 @@
+
+.gitignore
+.gitmodules
+
 *.zip
 
 # Setting & configuration files.
