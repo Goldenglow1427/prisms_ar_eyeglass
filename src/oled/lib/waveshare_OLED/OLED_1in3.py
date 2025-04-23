@@ -51,7 +51,8 @@ class OLED_1in3(object):
     """    Write register address and data     """
     def command(self, cmd):
         if(self.Device == Device_SPI):
-            GPIO.output(self._dc, GPIO.LOW)
+            # GPIO.output(self._dc, GPIO.LOW)
+            config.dc.off()
             config.spi_writebyte([cmd])
         else:
             config.i2c_writebyte(0x00, cmd)
@@ -91,11 +92,14 @@ class OLED_1in3(object):
    
     def reset(self):
         """Reset the display"""
-        GPIO.output(self._rst,GPIO.HIGH)
+        # GPIO.output(self._rst,GPIO.HIGH)
+        config.rst.on()
         time.sleep(0.1)
-        GPIO.output(self._rst,GPIO.LOW)
+        # GPIO.output(self._rst,GPIO.LOW)
+        config.rst.off()
         time.sleep(0.1)
-        GPIO.output(self._rst,GPIO.HIGH)
+        # GPIO.output(self._rst,GPIO.HIGH)
+        config.rst.on()
         time.sleep(0.1)
     
     def getbuffer(self, image):
@@ -132,7 +136,8 @@ class OLED_1in3(object):
             # write data #
             time.sleep(0.01)
             if(self.Device == Device_SPI):
-                GPIO.output(self._dc, GPIO.HIGH);
+                # GPIO.output(self._dc, GPIO.HIGH);
+                config.dc.on()
             for i in range(0,self.width):
                 if(self.Device == Device_SPI):
                     config.spi_writebyte([~pBuf[i+self.width*page]]); 

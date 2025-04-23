@@ -27,11 +27,12 @@
 # THE SOFTWARE.
 #
 
-import RPi.GPIO as GPIO
 import time
 from smbus import SMBus
 import spidev
 import ctypes
+
+from gpiozero import LED
 
 # Pin definition
 RST_PIN         = 27
@@ -49,6 +50,10 @@ else :
     address = 0x3c
     bus = SMBus(1)
 
+rst = LED(RST_PIN)
+dc = LED(DC_PIN)
+cs = LED(CS_PIN)
+
 def delay_ms(delaytime):
     time.sleep(delaytime / 1000.0)
 
@@ -60,17 +65,27 @@ def i2c_writebyte(reg, value):
    
 def module_init():
     #print("module_init")
-    GPIO.setmode(GPIO.BCM)
-    GPIO.setwarnings(False)
-    GPIO.setup(RST_PIN, GPIO.OUT)
-    GPIO.setup(DC_PIN, GPIO.OUT)
-    GPIO.setup(CS_PIN, GPIO.OUT)  
-    GPIO.output(RST_PIN, 0)
+    # GPIO.setmode(GPIO.BCM)
+    # GPIO.setwarnings(False)
+    # GPIO.setup(RST_PIN, GPIO.OUT)
+    rst = LED(RST_PIN)
+
+    # GPIO.setup(DC_PIN, GPIO.OUT)
+    dc = LED(DC_PIN)
+
+    # GPIO.setup(CS_PIN, GPIO.OUT)
+    cs = LED(CS_PIN)
+
+    # GPIO.output(RST_PIN, 0)
+    rst.off()
     if(Device == Device_SPI):
         spi.max_speed_hz = 10000000
         spi.mode = 0b11  
-    GPIO.output(CS_PIN, 0)
-    GPIO.output(DC_PIN, 0)
+    # GPIO.output(CS_PIN, 0)
+    cs.off()
+    # GPIO.output(DC_PIN, 0)
+    dc.off()
+
     return 0
 
 def module_exit():
@@ -78,7 +93,11 @@ def module_exit():
         spi.close()
     else :
         bus.close()
-    GPIO.output(RST_PIN, 0)
-    GPIO.output(DC_PIN, 0)
+    # GPIO.output(RST_PIN, 0)
+    # GPIO.output(DC_PIN, 0)
+
+    rst.off()
+    dc.off()
+    
 
 ### END OF FILE ###
