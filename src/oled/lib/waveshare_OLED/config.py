@@ -71,15 +71,15 @@ def module_init():
     # GPIO.setmode(GPIO.BCM)
     # GPIO.setwarnings(False)
     # GPIO.setup(RST_PIN, GPIO.OUT)
-    rst.close()
+    # rst.close()
     rst = LED(RST_PIN)
 
     # GPIO.setup(DC_PIN, GPIO.OUT)
-    dc.close()
+    # dc.close()
     dc = LED(DC_PIN)
 
     # GPIO.setup(CS_PIN, GPIO.OUT)
-    cs.close()
+    # cs.close()
     cs = LED(CS_PIN)
 
     # GPIO.output(RST_PIN, 0)
