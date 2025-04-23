@@ -50,9 +50,12 @@ else :
     address = 0x3c
     bus = SMBus(1)
 
-rst = LED(RST_PIN)
-dc = LED(DC_PIN)
-cs = LED(CS_PIN)
+# rst = LED(RST_PIN)
+# dc = LED(DC_PIN)
+# cs = LED(CS_PIN)
+rst = None
+dc = None
+cs = None
 
 def delay_ms(delaytime):
     time.sleep(delaytime / 1000.0)
