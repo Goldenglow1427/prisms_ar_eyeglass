@@ -8,7 +8,7 @@ libdir = os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__)
 if os.path.exists(libdir):
     sys.path.append(libdir)
 
-import logging    
+import logging
 import time
 import traceback
 from waveshare_OLED import OLED_1in3
