@@ -50,12 +50,12 @@ else :
     address = 0x3c
     bus = SMBus(1)
 
-# rst = LED(RST_PIN)
-# dc = LED(DC_PIN)
-# cs = LED(CS_PIN)
-rst = 1
-dc = 1
-cs = 1
+rst = LED(RST_PIN)
+dc = LED(DC_PIN)
+cs = LED(CS_PIN)
+# rst = 1
+# dc = 1
+# cs = 1
 
 def delay_ms(delaytime):
     time.sleep(delaytime / 1000.0)
@@ -72,18 +72,22 @@ def module_init():
     # GPIO.setwarnings(False)
     # GPIO.setup(RST_PIN, GPIO.OUT)
 
-    if rst != 1:
-        rst.close()
-    rst = LED(RST_PIN)
+    global rst
+    global dc
+    global cs
+
+    # if rst != 1:
+    #     rst.close()
+    # rst = LED(RST_PIN)
 
     # GPIO.setup(DC_PIN, GPIO.OUT)
-    if dc != 1:
-        dc.close()
-    dc = LED(DC_PIN)
+    # if dc != 1:
+    #     dc.close()
+    # dc = LED(DC_PIN)
 
     # GPIO.setup(CS_PIN, GPIO.OUT)
     # cs.close()
-    cs = LED(CS_PIN)
+    # cs = LED(CS_PIN)
 
     # GPIO.output(RST_PIN, 0)
     rst.off()
