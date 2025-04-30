@@ -43,15 +43,16 @@ class OLED_1in5_b(object):
         self.width = OLED_WIDTH
         self.height = OLED_HEIGHT
         #Initialize DC RST pin
-        self._dc = config.DC_PIN
-        self._rst = config.RST_PIN
+        self._dc = config.dc
+        self._rst = config.rst
         self.Device = config.Device
 
 
     """    Write register address and data     """
     def command(self, cmd):
         if(self.Device == Device_SPI):
-            GPIO.output(self._dc, GPIO.LOW)
+            # GPIO.output(self._dc, GPIO.LOW)
+            self._dc.off()
             config.spi_writebyte([cmd])
         else:
             config.i2c_writebyte(0x00, cmd)
@@ -105,11 +106,14 @@ class OLED_1in5_b(object):
    
     def reset(self):
         """Reset the display"""
-        GPIO.output(self._rst,GPIO.HIGH)
+        # GPIO.output(self._rst,GPIO.HIGH)
+        self._rst.on()
         time.sleep(0.2)
-        GPIO.output(self._rst,GPIO.LOW)
+        # GPIO.output(self._rst,GPIO.LOW)
+        self._rst.off()
         time.sleep(0.2)
-        GPIO.output(self._rst,GPIO.HIGH)
+        # GPIO.output(self._rst,GPIO.HIGH)
+        self._rst.on()
         time.sleep(0.2)
     
     def getbuffer(self, image):
