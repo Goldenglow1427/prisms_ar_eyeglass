@@ -53,9 +53,9 @@ else :
 # rst = LED(RST_PIN)
 # dc = LED(DC_PIN)
 # cs = LED(CS_PIN)
-rst = None
-dc = None
-cs = None
+rst = 1
+dc = 1
+cs = 1
 
 def delay_ms(delaytime):
     time.sleep(delaytime / 1000.0)
@@ -72,12 +72,13 @@ def module_init():
     # GPIO.setwarnings(False)
     # GPIO.setup(RST_PIN, GPIO.OUT)
 
-    # if rst is not None:
-    #     rst.close()
+    if rst != 1:
+        rst.close()
     rst = LED(RST_PIN)
 
     # GPIO.setup(DC_PIN, GPIO.OUT)
-    # dc.close()
+    if dc != 1:
+        dc.close()
     dc = LED(DC_PIN)
 
     # GPIO.setup(CS_PIN, GPIO.OUT)
