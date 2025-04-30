@@ -141,7 +141,8 @@ class OLED_1in5_b(object):
             # write data #
             time.sleep(0.01)
             if(self.Device == Device_SPI):
-                GPIO.output(self._dc, GPIO.HIGH)
+                # GPIO.output(self._dc, GPIO.HIGH)
+                self._dc.off()
             for i in range(0,self.width//8):
                 if(self.Device == Device_SPI):
                     config.spi_writebyte([pBuf[i+self.width//8*page]])
