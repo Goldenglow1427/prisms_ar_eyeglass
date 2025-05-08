@@ -44,7 +44,7 @@ try:
     
     logging.info ("***draw image")
     Himage2 = Image.new('1', (disp.width, disp.height), 255)  # 255: clear the frame
-    bmp = Image.open(os.path.join(picdir, 'output.bmp'))
+    bmp = Image.open(os.path.join(picdir, '1in51.bmp'))
     Himage2.paste(bmp, (0,0))
     Himage2=Himage2.rotate(180) 	
     disp.ShowImage(disp.getbuffer(Himage2)) 
