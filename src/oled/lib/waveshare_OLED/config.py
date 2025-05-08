@@ -37,7 +37,7 @@ from gpiozero import LED
 # Pin definition
 RST_PIN         = 27
 DC_PIN          = 25
-CS_PIN          = 8
+CS_PIN          = 7
 
 Device_SPI = 1
 Device_I2C = 0
